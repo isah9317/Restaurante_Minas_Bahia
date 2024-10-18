@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Interativo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Incluindo jQuery -->
+    <style>
+        /* Estilo da barra lateral */
+        .menu-lateral {
+            width: 250px;
+            height: 100vh;
+            background-color: #222222;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+
+        .menu-lateral .menu-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .menu-lateral button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #3692c5;
+            border: none;
+            color: rgb(255, 255, 255);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .menu-lateral button:hover {
+            background-color: #6c757d;
+        }
+
+        /* Estilo do conteúdo do cardápio */
+        .menu {
+            margin-left: 280px; /* Espaço para a barra lateral */
+            padding: 20px;
+        }
+
+        .menu-item {
+            display: none;
+        }
+
+        .menu-item.active {
+            display: block;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .go-back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .go-back-btn button {
+            background-color: #3692c5;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .go-back-btn button:hover {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra lateral com botões de filtro -->
+    <div class="menu-lateral">
+        <div class="menu-title">Categorias</div>
+        <button class="menu-filter" data-category="marmitex">Marmitex</button>
+        <button class="menu-filter" data-category="prato-feito">Prato Feito</button>
+        <button class="menu-filter" data-category="dia">Pratos do Dia</button>
+        <button class="menu-filter" data-category="bebidas">Bebidas</button>
+        <button class="menu-filter" data-category="acaraje">Acarajé</button>
+    </div>
+
+   <!-- Conteúdo do cardápio -->
+    <div class="menu">
+        <!-- Marmitex -->
+        <div class="menu-item" data-category="marmitex">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Frango Empanado</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Frango Grelhado</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Frango a Passarinho</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bife Acebolado</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Calabresa Aceebolada</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Peixe a Dorê</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Omelete</h5>
+                    <p class="card-text">Arroz, Feijão, Maxcarrão, Farofa e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bife a Cavalo</h5>
+                    <p class="card-text">Arroz, Feijão, Batata Frita e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parmegiana de Carne</h5>
+                    <p class="card-text">Arroz, Feijão, Batata Frita e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parmegiana de Frango</h5>
+                    <p class="card-text">Arroz, Feijão, Batata Frita e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Moqueca de Peixe (Cação)</h5>
+                    <p class="card-text">Arroz, Moqueca e Pirão.</p>
+                </div>
+            </div>
+        </div>
+   
+        <!-- Prato Feito -->
+<div class="menu-item" data-category="prato-feito">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Bife Acebolado</h5>
+            <p class="card-text">Arroz, Feijão, Macarrão, Farofa, e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Peixe A Dorê</h5>
+            <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Frango Grelhado</h5>
+            <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Frango Empanado</h5>
+            <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Calbresa Acebolada</h5>
+            <p class="card-text">Arroz, Feijão, Macarrão, Farofa e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Omelete</h5>
+            <p class="card-text">(2 ovos, Tomate, Mussarela e cheiro verde) <br>
+            Arroz, Feijão, Marcarrão, Farofa e Salada</p>
+        </div>
+    </div>
+ 
+    <!-- Adicionando "Pratos Especiais" -->
+    <h1>Pratos Especiais</h1>
+ 
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Bife A Cavalo </h5>
+            <p class="card-text">Arroz, Feijão, Ovo, Batata Frita, Farofa e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Parmegiana De Frango</h5>
+            <p class="card-text">Arroz, Feijão, Batata Frita e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Parmegiana De Carne</h5>
+            <p class="card-text">Arroz, Feijão, Batata Frita e Salada</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Moqueca De Peixe Cação</h5>
+            <p class="card-text">Arroz, Moqueca e Pirão <br>
+            (Serve 2 Pessoas)</p>
+        </div>
+    </div>
+</div>
+ 
+ 
+          <!-- Pratos do Dia -->
+          <div class="menu-item" data-category="dia">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Segunda-Feira</h4>
+                    <h5>CARNE DE PANELA</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Salada e Farofa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Terça-Feira</h4>
+                    <h5>STROGONOFF DE FRANGO</h5>
+                    <p class="card-text">Arroz, Feijão, Batata Palha e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Quarta-Feira</h4>
+                    <h5>BISTECA DE PORCO</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Salada e Farofa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Quinta-Feira</h4>
+                    <h5>FRANGO COM QUIABO</h5>
+                    <p class="card-text">Arroz, Feijão, Polenta e Salada</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sexta-Feira</h4>
+                    <h5>LINGUIÇA TOSCANA ACEBOLADA</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Salada e Farofa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sábado</h4>
+                    <h5>FEIJOADA MINEIRA</h5>
+                    <p class="card-text">Arroz, Farofa, Couve Refogada, Laranja e Salada.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sabado</h4>
+                    <h5>LINGUIÇA TOSCANA</h5>
+                    <p class="card-text">Arroz, Feijão, Macarrão, Salada e Farofa.</p>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Bebidas -->
+<div class="menu-item" data-category="bebidas">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Itubaina</h5>
+            <p class="card-text">600ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coca Cola KS</h5>
+            <p class="card-text">290ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coca Cola Lata</h5>
+            <p class="card-text">350ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coca Cola</h5>
+            <p class="card-text">1L.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Coca Cola</h5>
+            <p class="card-text">1,5L.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Guarana Antartica Lata</h5>
+            <p class="card-text">350ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Guarana Antartica</h5>
+            <p class="card-text">1L.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Guarana Antartica</h5>
+            <p class="card-text">1,5L.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Sukita</h5>
+            <p class="card-text">2L.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Água Mineral</h5>
+            <p class="card-text">300ml.</p>
+        </div>
+    </div>
+    <h1>CERVEJAS</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Itaipava</h5>
+            <p class="card-text">300ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Itaipava</h5>
+            <p class="card-text">600ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Heineken</h5>
+            <p class="card-text">350ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Heineken</h5>
+            <p class="card-text">600ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Amstel</h5>
+            <p class="card-text">475ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Amstel</h5>
+            <p class="card-text">600ml.</p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Petra</h5>
+            <p class="card-text">300ml.</p>
+        </div>
+    </div>
+    </div>
+    <div class="menu-item" data-category="acaraje">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-body"> Acarajé Tradicional</h5>
+            <p class="card-text"> Bolinho (feijão fradinho), Molho de camarão, Vatapá, Salada de camarão, Caruru</p>
+        </div>
+    </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-body"> Acarajé No Prato</h5>
+                <p class="card-text"> Bolinho (feijão fradinho), Molho de camarão, Vatapá, Salada de camarão, Caruru</p>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-body"> Porção de Acarajé</h5>
+            <p class="card-text"> Bolinho (feijão fradinho), Molho de camarão, Vatapá, Salada de camarão, Caruru</p>
+        </div>
+    </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-body"> Acarajé na Marmita</h5>
+                <p class="card-text"> Bolinho (feijão fradinho), Molho de camarão, Vatapá, Salada de camarão, Caruru</p>
+            </div>
+            </div>
+    </div>
+
+    <!-- Botão Go Back -->
+    <div class="go-back-btn">
+        <button onclick="voltar()">Voltar</button>
+    </div>
+
+    <!-- Script jQuery para Filtros -->
+    <script>
+        $(document).ready(function() {
+            // Mostrar os itens da primeira categoria por padrão
+            $('.menu-item[data-category="marmitex"]').addClass('active').fadeIn();
+
+            $(".menu-filter").click(function() {
+                var category = $(this).data("category");
+
+                // Esconder todos os itens do menu
+                $(".menu-item").removeClass('active').hide();
+
+                // Mostrar os itens da categoria selecionada
+                $(".menu-item[data-category='" + category + "']").addClass('active').fadeIn();
+            });
+        });
+
+        function voltar() {
+            // Voltar para a página anterior
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

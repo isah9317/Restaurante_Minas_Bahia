@@ -1,0 +1,21 @@
+
+
+.rodape {
+    background-color:#000000;
+    color:#ecf0f1;
+    text-align: center;
+    font-size: 50px;
+    padding: 0px;
+    background-position: left;  
+    
+  
+}
+.menu-filtros {
+    margin:50px auto;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: rgb(10, 10, 10);
+    margin:0;
+}

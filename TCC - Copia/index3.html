@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+   <link rel="stylesheet" href="style.css">
+    <title>Minas Bahia Restaurante</title>
+    <link rel="shortcut icon" type="image/jpeg" href="minas.ico">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Adicionando os estilos e scripts do Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        .rodape {
+            border: none; /* Sem borda */
+        padding: 03px; /* Ajustar espaçamento interno */
+        background-color: #000000; /* Cor preta para o fundo */
+        text-align: center;
+        font-size: 14px; /* Tamanho da fonte */
+        color: white; /* Cor do texto */
+}
+.menu-icon {
+            font-size: 50px; /* Tamanho do ícone */
+            color: black; /* Cor do ícone */
+            cursor: pointer; /* Apontador de link */
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+body {   margin: 0; 
+}
+h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+/* Estilos do banner */
+.banner {
+    background-color:#3692c5;
+
+     font-size: 40px;
+     text-align:center;
+    padding: 0px;
+    min-height: 60%;
+    background-size: contain;
+    background-position: absolute;
+    background-repeat: no-repeat;
+    
+}
+   
+.menu {
+    margin:50px auto;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: rgb(239, 239, 239);
+    margin:0;
+}
+
+
+.menu li {
+    margin:0;
+    font-size: 20px;
+}
+
+.menu a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+
+}
+
+/* Estilos do corpo */
+.corpo {
+    background-color:#3692c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Exemplo básico de CSS para o formulário */
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+label {
+    margin-top: 1em;
+    display: block;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 0.7em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li>
+                <!-- Link para a página do Cardápio -->
+                <a href="Cardapio.html">
+                    <img src="imagens/menu.png"width="35" height="35.5"/> 
+                    <!-- Ícone de menu usando FontAwesome -->
+                    <i class="fas fa-utensils menu-icon"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Banner -->
+    <div class="banner">
+        <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+        <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+
+        <div class="swiffy-slider">
+            <ul class="slider-container">
+                <li><img src="imagens/Minas.png" style="max-width: 34%;height: auto;"></li>
+                <li><img src="imagens/feijão.jpeg" style="max-width: 34%;height: auto;"></li>
+                <li><img src="imagens/Vatapá.jpeg" style="max-width: 34%;height: auto;"></li>
+                <li><img src="imagens/salada.jpeg" style="max-width: 34%;height: auto;"></li>
+            </ul>
+
+            <button type="button" class="slider-nav"></button>
+            <button type="button" class="slider-nav slider-nav-next"></button>
+
+            <div class="slider-indicators">
+                <button class="active"></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Corpo -->
+    <div class="corpo">
+  
+    </div>
+    <!-- Hotjar Tracking Code for Site 5162034 (nome ausente) -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:5162034,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+    <!-- Rodapé -->
+    <div class="rodape">
+        <p>Tel: 12 99641-5604</p> 
+        <p>End: Av. Guarda Mirim Juarez, 695 - Indaiá, Caraguatatuba</p>
+
+        <div>
+            <center>
+            <table>
+                <tr>
+                    <td>
+                        <a href="https://www.instagram.com/restaurante_minas_bahiasp/" target="_blank">
+                            <img src="imagens/insta-rem.png" alt="Instagram" width="40" height="40">
+                        </a>
+                    </td> 
+                    <td>
+                        <a href="https://www.google.com.br/maps/place/Av.+Guarda+Mirim+Juarez,+695+-+Indai%C3%A1,+Caraguatatuba+-+SP,+11665-340/@-23.6372885,-45.4341755,17z/data=!3m1!4b1!4m6!3m5!1s0x94cd6315da38a00f:0xe7c1343ca0a3182e!8m2!3d-23.6372934!4d-45.4293446!16s%2Fg%2F11c1bggg9m?entry=ttu" target="_blank">
+                            <img src="imagens/local 1.jpg" alt="Localização" width="35" height="35.5"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://api.whatsapp.com/message/MA4VS3EU732RC1?autoload=1&app_absent=0" target="_blank">
+                            <img src="imagens/ZAP ZAP.png" alt="WhatsApp" width="35" height="35.5"/>
+                        </a>
+                    </td>
+                </tr>  
+            </table> 
+            </center>
+        </div>
+    </div>
+
+    <!-- Script de scroll suave -->
+    <script>
+        $('a[href^="#"]').click(function(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 800);
+        });
+    </script>
+
+</body>
+</html>

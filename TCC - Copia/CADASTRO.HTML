@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .requirement {
+            color: red; /* Cor padrão para requisitos não atendidos */
+        }
+        .requirement.valid {
+            color: green; /* Cor quando um requisito é atendido */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="text-center">Cadastro de Usuário</h2>
+        <form id="cadastroForm" method="POST">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome de Usuário</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+                <span id="username-length" class="requirement">Mínimo de 3 caracteres</span><br>
+                <span id="username-characters" class="requirement">Apenas letras e números</span>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+                <span id="length" class="requirement">Mínimo de 8 caracteres</span><br>
+                <span id="uppercase" class="requirement">Pelo menos 1 letra maiúscula</span><br>
+                <span id="number" class="requirement">Pelo menos 1 número</span>
+            </div>
+            <div class="mb-3">
+                <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" required>
+            </div>
+            <span id='message'></span>
+            <button type="button" class="btn btn-primary w-100" id="cadastrar-btn">Cadastrar</button>
+        </form>
+        
+        <div class="text-center mt-3">
+            <p>Já tem uma conta? <a href="login.html">Voltar para Login</a></p>
+        </div>
+    </div>
+
+    <!-- Adicionando jQuery e Inputmask -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
+    <!-- Script para validar a confirmação de senha e a força da senha -->
+    <script>
+        $(document).ready(function() {
+            // Máscara para telefone
+            $('#telefone').inputmask('(99) 99999-9999', { placeholder: ' ' });
+
+            // Validação do nome de usuário
+            $('#nome').on('input', function() {
+                var username = $(this).val();
+
+                // Verifica o comprimento
+                if (username.length >= 3) {
+                    $('#username-length').addClass('valid');
+                } else {
+                    $('#username-length').removeClass('valid');
+                }
+
+                // Verifica caracteres permitidos (apenas letras e números)
+                if (/^[a-zA-Z0-9]+$/.test(username)) {
+                    $('#username-characters').addClass('valid');
+                } else {
+                    $('#username-characters').removeClass('valid');
+                }
+            });
+
+            // Validação da confirmação de senha
+            $('#confirmar_senha').on('keyup', function() {
+                var password = $('#senha').val();
+                var confirmPassword = $(this).val();
+                
+                if (password === confirmPassword) {
+                    $('#message').text('As senhas coincidem').css('color', 'green');
+                } else {
+                    $('#message').text('As senhas não coincidem').css('color', 'red');
+                }
+            });
+
+            // Validação da força da senha
+            $('#senha').on('input', function() {
+                var password = $(this).val();
+
+                // Verifica os requisitos
+                checkRequirements(password);
+            });
+
+            function checkRequirements(password) {
+                // Verifica o comprimento
+                if (password.length >= 8) {
+                    $('#length').addClass('valid');
+                } else {
+                    $('#length').removeClass('valid');
+                }
+
+                // Verifica se contém pelo menos uma letra maiúscula
+                if (/[A-Z]/.test(password)) {
+                    $('#uppercase').addClass('valid');
+                } else {
+                    $('#uppercase').removeClass('valid');
+                }
+
+                // Verifica se contém pelo menos um número
+                if (/[0-9]/.test(password)) {
+                    $('#number').addClass('valid');
+                } else {
+                    $('#number').removeClass('valid');
+                }
+            }
+
+            // Redirecionar para index2 após a validação do cadastro
+            $('#cadastrar-btn').on('click', function() {
+                var password = $('#senha').val();
+                var confirmPassword = $('#confirmar_senha').val();
+
+                // Verifica se as senhas coincidem antes de redirecionar
+                if (password === confirmPassword) {
+                    window.location.href = "index2.html";
+                } else {
+                    alert('As senhas não coincidem. Por favor, corrija e tente novamente.');
+                }
+            });
+        });
+       
+    </script>
+</body>
+</html>

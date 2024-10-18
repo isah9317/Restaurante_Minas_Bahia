@@ -1,0 +1,105 @@
+/* Reset de estilos para remover margens e preenchimentos padrão */
+body {   margin: 0; 
+}
+h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+/* Estilos do banner */
+.banner {
+    background-color:#3692c5;
+    color:black;
+     font-size: 40px;
+     text-align:center;
+    padding: 0px;
+    min-height: 60%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+   
+.menu {
+    margin:50px auto;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: rgb(10, 10, 10);
+    margin:0;
+}
+
+
+.menu li {
+    margin:0;
+    font-size: 20px;
+}
+
+.menu a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+
+}
+
+/* Estilos do corpo */
+.corpo {
+    background-color:#3692c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Exemplo básico de CSS para o formulário */
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+label {
+    margin-top: 1em;
+    display: block;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+    margin-bottom: 1em;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 0.7em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos do rodapé */
+.rodape {
+    background-color:#000000;
+    color:#ecf0f1;
+    text-align: center;
+    font-size: 50px;
+    padding: 10px;
+    background-position: left;  
+    border: none; /* Remover borda, caso tenha */
+    padding: 05px; /* Ajustar espaçamento interno */
+    background-color: #f1f1f1; /* Exemplo de cor, se necessário */
+    text-align: center;
+    font-size: 14px; /* Ajustar o tamanho da fonte, se necessário */
+}
+
+

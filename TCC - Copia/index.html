@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Minas Bahia Restaurante</title>
+    <link rel="shortcut icon" type="image/jpeg" href="minas.ico">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Adicionando os estilos e scripts do Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        /* Estilo para o mapa */
+        #map {
+            height: 500px;
+            width: 50%;
+            background-position: center;  
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="perfil.html"><img src="imagens/icone perfil.png" width="40px" height="40px"/></a></li>
+            <li><a href="CADASTRO.HTML">Cadastrar-se</a></li>
+            <li><a href="login.html">Login</a></li> 
+            <li><a href="Cardapio.html">Cardápio</a></li>
+            <li><a href="#map">Localização</a></li> <!-- Link para scroll suave até o mapa -->
+        </ul>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+        <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+
+        <div class="swiffy-slider">
+            <ul class="slider-container">
+                <li><img src="imagens/Minas.png" style="max-width: 34%;height: auto;"></li>
+                <li><img src="imagens/feijão.jpeg" style="max-width: 34%;height: auto;"></li>
+                <li><img src="imagens/Vatapá.jpeg" style="max-width: 34%;height: auto;"></li>
+                <li><img src="imagens/salada.jpeg" style="max-width: 34%;height: auto;"></li>
+            </ul>
+
+            <button type="button" class="slider-nav"></button>
+            <button type="button" class="slider-nav slider-nav-next"></button>
+
+            <div class="slider-indicators">
+                <button class="active"></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Corpo -->
+    <div class="corpo">
+        <!-- Adicionando o mapa interativo -->
+        <div id="map"></div>
+
+        <!-- Script para inicializar o mapa -->
+        <script>
+            var map = L.map('map').setView([-23.6372934, -45.4293446], 15);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([-23.6372934, -45.4293446]).addTo(map)
+                .bindPopup(' Restaurante Minas Bahia')
+                .openPopup();
+        </script>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="rodape">
+        <p>Tel: 12 99641-5604</p> 
+        <p>End: Av. Guarda Mirim Juarez, 695 - Indaiá, Caraguatatuba</p>
+
+        <div>
+            <center>
+            <table>
+                <tr>
+                    <td>
+                        <a href="https://www.instagram.com/restaurante_minas_bahiasp/" target="_blank">
+                            <img src="imagens/insta-rem.png" alt="Instagram" width="70" height="70">
+                        </a>
+                    </td> 
+                    <td>
+                        <a href="https://www.google.com.br/maps/place/Av.+Guarda+Mirim+Juarez,+695+-+Indai%C3%A1,+Caraguatatuba+-+SP,+11665-340/@-23.6372885,-45.4341755,17z/data=!3m1!4b1!4m6!3m5!1s0x94cd6315da38a00f:0xe7c1343ca0a3182e!8m2!3d-23.6372934!4d-45.4293446!16s%2Fg%2F11c1bggg9m?entry=ttu" target="_blank">
+                            <img src="imagens/local 1.jpg" alt="Localização" width="64" height="64.5"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="https://api.whatsapp.com/message/MA4VS3EU732RC1?autoload=1&app_absent=0" target="_blank">
+                            <img src="imagens/ZAP ZAP.png" alt="WhatsApp" width="64" height="64.5"/>
+                        </a>
+                    </td>
+                </tr>  
+            </table> 
+            </center>
+        </div>
+    </div>
+
+    <!-- Script de scroll suave -->
+    <script>
+        $('a[href^="#"]').click(function(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 800);
+        });
+    </script>
+ 
+
+</body>
+</html>
